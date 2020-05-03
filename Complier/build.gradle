@@ -1,0 +1,18 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //引入注解
+    implementation project(':Annotation')
+    //引入Google注解处理器服务
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+
+}
+
+//中文乱码问题（错误：编码GBK的不可映射字段）
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
